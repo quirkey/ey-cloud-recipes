@@ -4,7 +4,7 @@
 #
 
 package "couchdb" do
-  version "0.8.1"
+  version "0.10.0"
 end
 
 directory "/db/couchdb/log" do
