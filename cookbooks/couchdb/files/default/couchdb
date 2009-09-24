@@ -24,7 +24,7 @@ COUCHDB=/usr/bin/couchdb
 # Better put this file into /etc/conf.d
 #
 # for a second version?
-CONFIGURATION_FILE=/etc/couchdb/local.ini
+CONFIGURATION_FILE=/etc/default/couchdb
 
 
 sourceconfig() {
