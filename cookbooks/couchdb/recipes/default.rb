@@ -15,8 +15,8 @@ directory "/db/couchdb/log" do
 end
 
 template "/etc/couchdb/local.ini" do
-  owner 'root'
-  group 'root'
+  owner 'couchdb'
+  group 'couchdb'
   mode 0644
   source "local.ini.erb"
   variables({
