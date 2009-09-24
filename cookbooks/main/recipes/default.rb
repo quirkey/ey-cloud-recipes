@@ -11,6 +11,10 @@ if node[:instance_role] == 'db_master'
   require_recipe 'couchdb'
 end
 
+if node[:instance_role] == 'app_master' 
+  require_recipe 'couchdb::credentials'
+end
+
 # uncomment to turn use the MBARI ruby patches for decreased memory usage and better thread/continuationi performance
 # require_recipe "mbari-ruby"
 
