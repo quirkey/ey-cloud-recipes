@@ -31,4 +31,4 @@ level = <%= @loglevel %>
 ; 'username = password' lines. Don't forget to restart CouchDB after 
 ; changing this.
 [admins]
-admin = <%= node[:owner_pass] %>
+admin = <%= @admin_pass %>
