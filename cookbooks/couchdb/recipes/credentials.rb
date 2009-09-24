@@ -3,7 +3,7 @@ node[:applications].each do |app, data|
   template "/data/#{app}/shared/config/couchdb.yml" do
     owner node[:owner_name]
     group node[:owner_name]
-    mode 0600
+    mode 0700
     source "couchdb.yml.erb"
     variables({
       :env => node[:environment][:framework_env],

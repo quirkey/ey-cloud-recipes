@@ -7,7 +7,7 @@ package "couchdb" do
   version "0.9.0"
 end
 
-directory "/db/couchdb/log" do
+directory "/db/couchdb" do
   owner "couchdb"
   group "couchdb"
   mode 0755
@@ -50,5 +50,5 @@ execute "ensure-couchdb-is-running" do
   command %Q{
     /etc/init.d/couchdb restart
   }
-  not_if "/etc/init.d/couchdb status | grep 'status:  started'"
+  # not_if "/etc/init.d/couchdb status | grep 'status:  started'"
 end
