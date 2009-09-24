@@ -1,0 +1,34 @@
+; CouchDB Configuration Settings
+
+; Custom settings should be made in this file. They will override settings
+; in default.ini, but unlike changes made to default.ini, this file won't be
+; overwritten on server upgrade.
+
+[couchdb]
+database_dir = <%= @basedir %>
+view_index_dir = <%= @basedir %>
+util_driver_dir = <%= @driver_dir %>
+max_document_size = 4294967296 ; 4 GB
+max_attachment_chunk_size = 4294967296 ; 4GB
+os_process_timeout = 5000 ; 5 seconds. for view and external servers.
+max_dbs_open = 100
+
+[httpd]
+port = <%= @port %>
+bind_address = <%= @bind_address %>
+
+[log]
+file = <%= @logfile %>
+level = <%= @loglevel %>
+
+[update_notification]
+;unique notifier name=/full/path/to/exe -with "cmd line arg"
+
+; To create an admin account uncomment the '[admins]' section below and add a
+; line in the format 'username = password'. When you next start CouchDB, it
+; will change the password to a hash (so that your passwords don't linger 
+; around in plain-text files). You can add more admin accounts with more 
+; 'username = password' lines. Don't forget to restart CouchDB after 
+; changing this.
+;[admins]
+;admin = mysecretpassword

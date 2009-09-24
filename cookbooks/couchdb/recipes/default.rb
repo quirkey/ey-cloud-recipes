@@ -14,11 +14,11 @@ directory "/db/couchdb/log" do
   recursive true
 end
 
-template "/etc/couchdb/couch.ini" do
+template "/etc/couchdb/local.ini" do
   owner 'root'
   group 'root'
   mode 0644
-  source "couch.ini.erb"
+  source "local.ini.erb"
   variables({
     :basedir => '/db/couchdb',
     :logfile => '/db/couchdb/log/couch.log',
