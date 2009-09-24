@@ -21,7 +21,7 @@ bind_address = <%= @bind_address %>
 file = <%= @logfile %>
 level = <%= @loglevel %>
 
-[update_notification]
+;[update_notification]
 ;unique notifier name=/full/path/to/exe -with "cmd line arg"
 
 ; To create an admin account uncomment the '[admins]' section below and add a
@@ -30,5 +30,6 @@ level = <%= @loglevel %>
 ; around in plain-text files). You can add more admin accounts with more 
 ; 'username = password' lines. Don't forget to restart CouchDB after 
 ; changing this.
+
 [admins]
-admin = <%= @admin_pass %>
+<%= @admin_user %> = <%= @admin_pass %>

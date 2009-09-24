@@ -27,6 +27,7 @@ template "/etc/couchdb/local.ini" do
     :doc_root => '/usr/share/couchdb/www', # change if you have a cutom couch www root
     :driver_dir => '/usr/lib/couchdb/erlang/lib/couch-0.9.0/priv/lib', # this is good for the 0.8.1 build on our gentoo
     :loglevel => 'info',
+    :admin_user => 'admin'
     :admin_pass => node[:owner_pass]
   })
 end
