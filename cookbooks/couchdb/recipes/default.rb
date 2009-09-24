@@ -22,8 +22,8 @@ template "/etc/couchdb/local.ini" do
   variables({
     :basedir => '/db/couchdb',
     :logfile => '/db/couchdb/log/couch.log',
-    :bind_address => '127.0.0.1', # '0.0.0.0' if you want couch available to the outside world
-    :port  => '5984',# change if you want to listen on another port
+    :bind_address => '0.0.0.0',
+    :port  => '5984',
     :doc_root => '/usr/share/couchdb/www', # change if you have a cutom couch www root
     :driver_dir => '/usr/lib/couchdb/erlang/lib/couch-0.9.0/priv/lib', # this is good for the 0.8.1 build on our gentoo
     :loglevel => 'info'
