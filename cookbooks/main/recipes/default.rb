@@ -11,7 +11,7 @@ if node[:instance_role] == 'db_master'
   require_recipe 'couchdb'
 end
 
-if node[:instance_role] == 'app_master' 
+if node[:instance_role] =~ /app/ 
   require_recipe 'couchdb::credentials'
 end
 
