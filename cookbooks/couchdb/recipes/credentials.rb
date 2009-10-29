@@ -1,5 +1,12 @@
 # create the couchdb yml
 node[:applications].each do |app, data|
+  directory "/data/#{app}/shared/config/couchdb.yml" do
+    owner node[:owner_name]
+    group node[:owner_name]
+    mode 0755
+    recursive true
+  end
+  
   template "/data/#{app}/shared/config/couchdb.yml" do
     owner node[:owner_name]
     group node[:owner_name]
