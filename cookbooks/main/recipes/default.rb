@@ -8,14 +8,14 @@ end
 # require_recipe "couchdb"
 
 if node[:instance_role] == 'db_master'
-  require_recipe 'couchdb'
+  require_recipe 'couchdb::default'
 end
 
-if node[:instance_role] =~ /app/ 
+if node[:instance_role] =~ /^app/ 
   require_recipe 'couchdb::credentials'
 end
 
-# uncomment to turn use the MBARI ruby patches for decreased memory usage and better thread/continuationi performance
+# uncomment to turn use the MBAR  I ruby patches for decreased memory usage and better thread/continuationi performance
 # require_recipe "mbari-ruby"
 
 # uncomment to turn on thinking sphinx 
