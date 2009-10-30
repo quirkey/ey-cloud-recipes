@@ -7,7 +7,7 @@ package "couchdb" do
   version "0.9.0"
 end
 
-directory "/db/couchdb" do
+directory "/db/couchdb/log" do
   owner "couchdb"
   group "couchdb"
   mode 0755
