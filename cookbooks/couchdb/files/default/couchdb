@@ -29,6 +29,7 @@ DESCRIPTION="database server"
 NAME=couchdb
 SCRIPT_NAME=`basename $0`
 COUCHDB=/usr/bin/couchdb
+COUCHDB_PID_FILE=/var/run/couchdb/couchdb.pid
 CONFIGURATION_FILE=/etc/default/couchdb
 RUN_DIR=/db/couch
 LSB_LIBRARY=/lib/lsb/init-functions
@@ -63,7 +64,7 @@ fi
 start_couchdb () {
     # Start Apache CouchDB as a background process.
 
-    command="$COUCHDB -b"
+    command="$COUCHDB -b -p $COUCHDB_PID_FILE"
     if test -n "$COUCHDB_STDOUT_FILE"; then
         command="$command -o $COUCHDB_STDOUT_FILE"
     fi
@@ -96,7 +97,7 @@ start_couchdb () {
 stop_couchdb () {
     # Stop the running Apache CouchDB process.
 
-    command="$COUCHDB -d"
+    command="$COUCHDB -d -p $COUCHDB_PID_FILE"
     if test -n "$COUCHDB_OPTIONS"; then
         command="$command $COUCHDB_OPTIONS"
     fi
