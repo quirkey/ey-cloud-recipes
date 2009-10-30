@@ -32,12 +32,12 @@ template "/etc/couchdb/local.ini" do
   })
 end
 
-# remote_file "/etc/init.d/couchdb" do
-#   source "couchdb"
-#   owner "root"
-#   group "root"
-#   mode 0755
-# end
+remote_file "/etc/init.d/couchdb" do
+  source "couchdb"
+  owner "root"
+  group "root"
+  mode 0755
+end
 
 execute "add-couchdb-to-default-run-level" do
   command %Q{
