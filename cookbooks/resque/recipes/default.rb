@@ -5,7 +5,7 @@
 
 require_recipe "redis::default"
 
-file "/usr/local/bin/resque" do
+remote_file "/usr/local/bin/resque" do
   owner node[:owner_name]
   group node[:owner_name]
   mode 0755
