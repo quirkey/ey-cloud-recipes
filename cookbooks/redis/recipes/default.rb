@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: couchdb
+# Cookbook Name:: redis
 # Recipe:: default
 #
 
@@ -50,7 +50,7 @@ execute "add-redis-to-default-run-level" do
   command %Q{
     rc-update add redis default
   }
-  not_if "rc-status | grep couchdb"
+  not_if "rc-status | grep redis"
 end
 
 execute "ensure-redis-is-running" do
