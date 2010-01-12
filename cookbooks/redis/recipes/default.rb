@@ -39,6 +39,7 @@ template "/etc/init.d/redis" do
   group "root"
   mode 0755
   variables({
+    :pid_file => pid_file,
     :config_file => config_file,
     :bin_path => bin_path,
     :port => port
@@ -52,7 +53,7 @@ execute "add-redis-to-default-run-level" do
   not_if "rc-status | grep couchdb"
 end
 
-execute "ensure-couchdb-is-running" do
+execute "ensure-redis-is-running" do
   command %Q{
     /etc/init.d/redis start
   }
