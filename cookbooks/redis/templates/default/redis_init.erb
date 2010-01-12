@@ -1,0 +1,47 @@
+#!/bin/sh -e
+### BEGIN INIT INFO
+# Provides:          redis
+# Required-Start:    $local_fs $remote_fs
+# Required-Stop:     $local_fs $remote_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Redis KV store init script
+# Description:       Redis KV store init script for the database server
+### END INIT INFO
+
+NAME=redis
+
+REDISPORT=<%= @port %>
+EXEC=<%= @bin_path %>
+
+PIDFILE=<%= @pid_file %>
+CONF="<%= @conf %>"
+
+case "$1" in
+    start)
+        if [ -f $PIDFILE ]
+        then
+                echo -n "$PIDFILE exists, process is already running or crashed\n"
+        else
+                echo -n "Starting Redis server...\n"
+                $EXEC $CONF
+        fi
+        ;;
+    stop)
+        if [ ! -f $PIDFILE ]
+        then
+                echo -n "$PIDFILE does not exist, process is not running\n"
+        else
+                echo -n "Stopping ...\n"
+                echo -n "Sending SHUTDOWN\r\n" | nc localhost $REDISPORT &
+                PID=$(cat $PIDFILE)
+                while [ -x /proc/${PIDFILE} ]
+                do
+                    echo "Waiting for Redis to shutdown ..."
+                    sleep 1
+                done
+                rm $PIDFILE
+                echo "Redis stopped"
+        fi
+        ;;
+esac

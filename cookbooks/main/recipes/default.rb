@@ -11,6 +11,10 @@ if node[:instance_role] == 'db_master'
   require_recipe 'couchdb::default'
 end
 
+if node[:instance_role] =~ 'app_master'
+  require_recipe 'redis::default'
+end
+
 if node[:instance_role] =~ /^app/ 
   require_recipe 'couchdb::credentials'
 end
