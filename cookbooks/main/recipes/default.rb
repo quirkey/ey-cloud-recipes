@@ -13,6 +13,7 @@ end
 
 if node[:instance_role] == 'app_master'
   require_recipe 'redis::default'
+  require_recipe 'resque::default'
 end
 
 if node[:instance_role] =~ /^app/ 
