@@ -38,7 +38,7 @@ remote_file "/usr/local/bin/resque" do
 end
 
 node[:applications].each do |app, data|
-  template "/etc/monit.d/resque_#{app}.conf" do
+  template "/etc/monit.d/resque_#{app}.monitrc" do
     owner 'root'
     group 'root'
     mode 0644
