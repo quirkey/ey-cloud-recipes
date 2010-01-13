@@ -3,6 +3,6 @@ check process resque_<%= @app_name %>_<%= num %>
   with pidfile /var/run/engineyard/resque/<%= @app_name %>/resque_<%= num %>.pid
   start program = "/usr/local/bin/resque <%= @app_name %> start <%= @rails_env %> <%= num %>"
   stop program = "/usr/local/bin/resque <%= @app_name %> stop <%= @rails_env %> <%= num %>"
-  if totalmem is greater than 512MB for 2 cycles then restart # eating up memory?
+  if totalmem is greater than 512 MB for 2 cycles then restart # eating up memory?
   group <%= @app_name %>
 <% end %>
