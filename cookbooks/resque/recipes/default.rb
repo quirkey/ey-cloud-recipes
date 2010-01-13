@@ -25,6 +25,11 @@ gem_package "uuid" do
   action :install
 end
 
+gem_package "redisk" do 
+  source "http://gemcutter.org"
+  action :install
+end
+
 remote_file "/usr/local/bin/resque" do
   owner node[:owner_name]
   group node[:owner_name]
@@ -36,7 +41,7 @@ node[:applications].each do |app, data|
   template "/etc/monit.d/resque_#{app}.conf" do
     owner 'root'
     group 'root'
-    mode 0600
+    mode 0644
     source "monit.conf.erb"
     variables({
       :num_workers => 2,
@@ -45,4 +50,3 @@ node[:applications].each do |app, data|
     })
   end
 end
-
