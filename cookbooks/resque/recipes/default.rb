@@ -5,6 +5,21 @@
 
 require_recipe "redis::default"
 
+gem_package "redis" do 
+  source "http://gemcutter.org"
+  action :install
+end  
+
+gem_package "redis-namespace" do 
+  source "http://gemcutter.org"
+  action :install
+end  
+
+gem_package "resque" do 
+  source "http://gemcutter.org"
+  action :install
+end  
+
 remote_file "/usr/local/bin/resque" do
   owner node[:owner_name]
   group node[:owner_name]
@@ -23,5 +38,7 @@ node[:applications].each do |app, data|
       :app_name => app,
       :rails_env => node[:environment][:framework_env]
     })  
+    notifies :run, resources(:execute => "restart-monit"), :immediate
   end
 end
+
