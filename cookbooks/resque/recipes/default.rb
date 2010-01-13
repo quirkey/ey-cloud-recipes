@@ -49,4 +49,16 @@ node[:applications].each do |app, data|
       :rails_env => node[:environment][:framework_env]
     })
   end
+  
+  execute "ensure-resque-is-setup-with-monit" do
+    command %Q{
+      monit reload
+    }
+    not_if "monit summary | grep 'resque'"
+  end
+  
+  execute "ensure-resque-is-setup-with-monit" do
+    command %Q{monit restart resque_#{app}_0}
+    command %Q{monit restart resque_#{app}_1}
+  end
 end
