@@ -3,6 +3,7 @@
 # Recipe:: default
 #
 
+require_recipe "monit::default"
 require_recipe "redis::default"
 
 gem_package "redis" do 
@@ -38,7 +39,7 @@ node[:applications].each do |app, data|
       :app_name => app,
       :rails_env => node[:environment][:framework_env]
     })  
-    notifies :run, resources(:execute => "restart-monit"), :immediate
+    notifies :run, resources(:execute => "restart-monit")
   end
 end
 
