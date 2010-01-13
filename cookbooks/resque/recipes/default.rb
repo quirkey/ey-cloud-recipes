@@ -20,6 +20,11 @@ gem_package "resque" do
   action :install
 end  
 
+gem_package "uuid" do 
+  source "http://gemcutter.org"
+  action :install
+end
+
 remote_file "/usr/local/bin/resque" do
   owner node[:owner_name]
   group node[:owner_name]
