@@ -20,8 +20,8 @@ bash "install_redis" do
 end
 
 directory "/db/redis" do
-  owner "redis"
-  group "redis"
+  owner "root"
+  group "root"
   mode 0755
   recursive true
 end
@@ -33,8 +33,8 @@ bin_path    = "/usr/bin/redis-server"
 
 
 template config_file do
-  owner 'redis'
-  group 'redis'
+  owner "root"
+  group "root"
   mode 0644
   source "redis.conf.erb"
   variables({
