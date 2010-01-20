@@ -3,8 +3,20 @@
 # Recipe:: default
 #
 
-package "redis" do
-  version "1.2"
+
+bash "install_redis" do
+  user "root"
+  cwd "/tmp"
+  code <<-EOBASH
+    wget http://redis.googlecode.com/files/redis-1.2.0.tar.gz
+    tar xzf redis-1.2.0.tar.gz
+    cd redis-1.2.0
+    make
+    cd ..
+    mv redis-1.2.0 /usr/local/redis
+    ln -nfs /usr/local/redis/redis-server /usr/bin/redis-server
+  EOBASH
+  not_if "test -d /usr/local/redis"
 end
 
 directory "/db/redis" do
