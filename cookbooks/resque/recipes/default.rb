@@ -3,7 +3,7 @@
 # Recipe:: default
 #
 
-require_recipe "redis::default"
+# require_recipe "redis::default"
 
 gem_package "redis" do 
   source "http://gemcutter.org"
