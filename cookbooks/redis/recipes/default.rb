@@ -4,7 +4,7 @@
 #
 
 package "redis" do
-  version "1.01"
+  version "1.2"
 end
 
 directory "/db/redis" do
