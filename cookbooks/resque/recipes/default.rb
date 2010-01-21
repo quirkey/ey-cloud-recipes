@@ -73,7 +73,7 @@ node[:applications].each do |app, data|
     not_if "monit summary | grep 'resque'"
   end
   
-  execute "ensure-resque-is-setup-with-monit" do
+  execute "restart-resque" do
     command %Q{monit restart resque_#{app}_0}
     command %Q{monit restart resque_#{app}_1}
   end

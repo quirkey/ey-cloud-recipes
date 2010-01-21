@@ -13,11 +13,11 @@ end
 
 if node[:instance_role] == 'app_master'
   require_recipe 'redis::default'
+  require_recipe 'resque::default'
 end
 
 if node[:instance_role] =~ /^app/ 
   require_recipe 'couchdb::credentials'
-  require_recipe 'resque::default'
 end
 
 # uncomment to turn use the MBAR  I ruby patches for decreased memory usage and better thread/continuationi performance
